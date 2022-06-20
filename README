@@ -1,0 +1,34 @@
+Как запустить проект:
+
+1) Google API
+- Скопировать файл гугл авторизации в ./
+- Записать имя файла гугл авторизации в поле google_cred_file файла ./config.json
+- Записать id таблицы в поле google_sheet_id файла ./config.json
+(Источник: https://docs.google.com/spreadsheets/d/<google_sheet_id>/edit#gid=0)
+
+2) Telegram
+- Записать токен телеграм бота, из которого будет производится рассылка, в поле tg_bot_token  файла ./config.json
+- Записать id получателя уведомлений в поле tg_receiver_id файла ./config.json
+(Для рассылки обязательно написать боту)
+
+3) PostgreSQL
+- Записать 
+имя базы данных, имя пользователя, пароль пользователя, ip базы, порт, имя таблицы в поля 
+db_name, db_user, db_password, db_ip, db_port, table_name
+файла ./config.json соответственно
+- Отформатировать базу данных в соответствие с полем columns файла ./config.json
+"<название_столбца>": "<тип_данных>", позиционнирование также важно
+
+4) Django
+- Скопировать параметры базы данных из ./config.json в ./deliverys_project/deliverys-project/local_settings.py
+db_name -> DB_NAME и т.д.
+- Записать в ./deliverys_project/deliverys-project/local_settings.py параметры запуска
+DEBUG - режим дебага (bool)
+ALLOWED_HOSTS - разрешенные домены для запуска (list(str))
+SECRET_KEY - секретный ключ (str)
+
+5) Запуск Google API скрипта
+python3 ./script.py &
+
+6) Запуск Django сервера
+python3 ./deliverys_project/manage.py runserver &
